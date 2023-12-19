@@ -10,19 +10,20 @@ MainWindow::MainWindow(QWidget *parent, Controller *c)
 MainWindow::~MainWindow() { delete ui; }
 
 bool MainWindow::importFile(const std::string &filePath) {
-  bool fl = controller_->loadMap(filePath);
-  return fl;
+  needsUpdate_ = controller_->loadMap(filePath);
+  return needsUpdate_;
 }
 
 void MainWindow::paintEvent(QPaintEvent *event) {
-  qDebug() << "Paint Event";
-  qDebug() << needsUpdate_;
+  //  qDebug() << "Paint Event";
+  //  qDebug() << needsUpdate_;
 
   QPainter painter(this);
-  if (!needsUpdate_) {
+  if (needsUpdate_) {
+    //      qDebug() << "RRR>>>" << controller_->GetData()[1][2];
     // painter.drawLine(10, 10, 100, 200);
-    int numRows = 10;
-    int numCols = 10;
+    int numRows = controller_->GetData().size();
+    int numCols = controller_->GetData()[0].size();
 
     int cellWidth = ui->map->width() / numCols;
     int cellHeight = ui->map->height() / numRows;
@@ -32,10 +33,11 @@ void MainWindow::paintEvent(QPaintEvent *event) {
         int x = j * cellWidth + 10;
         int y = i * cellHeight + 10;
 
-        //        if (controller_->GetData()[i][j] == 1) {
-        //          painter.fillRect(x, y, cellWidth, cellHeight, Qt::black);
-        //        } else {
-        painter.fillRect(x, y, cellWidth, cellHeight, Qt::white);
+        if (controller_->GetData()[i][j] == 1) {
+          painter.fillRect(x, y, cellWidth, cellHeight, Qt::black);
+        } else {
+          painter.fillRect(x, y, cellWidth, cellHeight, Qt::white);
+        }
       }
     }
   }
@@ -51,6 +53,6 @@ void MainWindow::update() {
 void MainWindow::on_importBtn_clicked() {
   if (importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt")) {
     ui->importBtn->setText("PORT");
-    needsUpdate_ = true;
+    repaint();
   }
 }

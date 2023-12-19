@@ -34,11 +34,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tabMaze">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Maze</string>
      </attribute>
      <widget class="QPushButton" name="importBtn">
       <property name="geometry">
@@ -56,12 +56,12 @@
     </widget>
     <widget class="QWidget" name="tabCave">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Cave</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="tabWave">
      <attribute name="title">
-      <string>Страница</string>
+      <string>Wave</string>
      </attribute>
     </widget>
    </widget>
