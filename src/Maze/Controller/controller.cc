@@ -1,4 +1,5 @@
 #include "controller.h"
+#include <ostream>
 
 bool Controller::loadMap(const std::string& filename) {
   try {
@@ -8,4 +9,8 @@ bool Controller::loadMap(const std::string& filename) {
     return false;
   }
   return true;
+}
+
+vector<vector<int> > Controller::GetData() {
+  return data_;
 }

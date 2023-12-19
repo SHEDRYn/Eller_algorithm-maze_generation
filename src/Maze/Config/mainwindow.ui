@@ -40,7 +40,7 @@
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="importBtn">
       <property name="geometry">
        <rect>
         <x>10</x>

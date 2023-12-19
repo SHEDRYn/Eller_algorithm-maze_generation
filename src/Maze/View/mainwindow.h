@@ -2,6 +2,7 @@
 #define SRC_MAZE_VIEW_MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPainter>
 
 #include "../Controller/controller.h"
 
@@ -18,8 +19,18 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = nullptr, Controller *c = nullptr);
   ~MainWindow();
 
+  bool importFile(const std::string &filePath);
+
+ protected:
+  void paintEvent(QPaintEvent *event) override;
+  virtual void update();
+
+ private slots:
+  void on_importBtn_clicked();
+
  private:
   Ui::MainWindow *ui;
   Controller *controller_;
+  bool needsUpdate_ = false;
 };
 #endif  // SRC_MAZE_VIEW_MAINWINDOW_H
