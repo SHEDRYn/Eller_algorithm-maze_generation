@@ -20,13 +20,11 @@ void MainWindow::paintEvent(QPaintEvent *event) {
 
   QPainter painter(this);
   if (needsUpdate_) {
-    //      qDebug() << "RRR>>>" << controller_->GetData()[1][2];
-    // painter.drawLine(10, 10, 100, 200);
     int numRows = controller_->GetData().size();
     int numCols = controller_->GetData()[0].size();
 
-    int cellWidth = ui->map->width() / numCols;
-    int cellHeight = ui->map->height() / numRows;
+    int cellWidth = ui->map->width() / numCols;    // width:500 px
+    int cellHeight = ui->map->height() / numRows;  // height:500 px
 
     for (int i = 0; i < numRows; ++i) {
       for (int j = 0; j < numCols; ++j) {
@@ -51,8 +49,20 @@ void MainWindow::update() {
 }
 
 void MainWindow::on_importBtn_clicked() {
-  if (importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt")) {
-    ui->importBtn->setText("PORT");
-    repaint();
+  QString rootPath = QDir::rootPath();
+  QString QString_filename = QFileDialog::getOpenFileName(
+      this, tr("Open .txt file:"), rootPath, tr("*.txt"));
+
+  if (!importFile(QString_filename.toStdString())) {
+    QMessageBox::warning(this, "ERROR", "Не удалось получить данные");
+    return;
   }
+  repaint();
 }
+
+// void MainWindow::on_importBtn_clicked() {
+//   if (importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt")) {
+//     ui->importBtn->setText("PORT");
+//     repaint();
+//   }
+// }

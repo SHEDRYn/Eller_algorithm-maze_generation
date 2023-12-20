@@ -1,7 +1,9 @@
 #ifndef SRC_MAZE_VIEW_MAINWINDOW_H
 #define SRC_MAZE_VIEW_MAINWINDOW_H
 
+#include <QFileDialog>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QPainter>
 
 #include "../Controller/controller.h"
