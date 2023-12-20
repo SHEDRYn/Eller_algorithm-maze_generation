@@ -20,8 +20,8 @@ void MainWindow::paintEvent(QPaintEvent *event) {
 
   QPainter painter(this);
   if (needsUpdate_) {
-    int numRows = controller_->GetData().size();
-    int numCols = controller_->GetData()[0].size();
+    int numRows = controller_->GetData().columns.size();
+    int numCols = controller_->GetData().columns[0].size();
 
     int cellWidth = ui->map->width() / numCols;    // width:500 px
     int cellHeight = ui->map->height() / numRows;  // height:500 px
@@ -30,13 +30,21 @@ void MainWindow::paintEvent(QPaintEvent *event) {
       for (int j = 0; j < numCols; ++j) {
         int x = j * cellWidth + 10;
         int y = i * cellHeight + 10;
+        //        qDebug() << controller_->GetData().columns[i][j];
+        //        if (controller_->GetData().columns[i][j] == 1) {
+        //          painter.fillRect(x, y, cellWidth, cellHeight, Qt::black);
+        //        } else {
+        //          painter.fillRect(x, y, cellWidth, cellHeight, Qt::white);
+        //        }
+        if (controller_->GetData().columns[j][i]) {
+          painter.drawLine(x, y + cellHeight, x + cellWidth, y + cellHeight);
+        }
 
-        if (controller_->GetData()[i][j] == 1) {
-          painter.fillRect(x, y, cellWidth, cellHeight, Qt::black);
-        } else {
-          painter.fillRect(x, y, cellWidth, cellHeight, Qt::white);
+        if (controller_->GetData().rows[j][i]) {
+          painter.drawLine(x + cellWidth, y, x + cellWidth, y + cellHeight);
         }
       }
+      qDebug() << "\n";
     }
   }
 }
@@ -66,3 +74,11 @@ void MainWindow::on_importBtn_clicked() {
 //     repaint();
 //   }
 // }
+
+void MainWindow::on_pushButton_clicked() {
+  if (!importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt")) {
+    QMessageBox::warning(this, "ERROR", "Не удалось получить данные");
+    return;
+  }
+  repaint();
+}

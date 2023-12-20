@@ -10,11 +10,11 @@ class Controller {
   Controller() = default;
 
   bool loadMap(const std::string& filename);
-  vector<vector<int>> GetData();
+  Parser::RowsAndColumns GetData();
 
  private:
   Parser pars;
-  vector<vector<int>> data_;
+  Parser::RowsAndColumns data_;
 };
 
 #endif  // SRC_MAZE_CONTROLLER_CONTROLLER_H

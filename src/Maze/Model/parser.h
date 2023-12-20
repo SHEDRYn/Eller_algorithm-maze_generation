@@ -10,9 +10,12 @@ using std::vector;
 class Parser {
  public:
   Parser() = default;
-  vector<vector<int>> loadMazeFromFile(const std::string& filename);
 
- private:
-  vector<vector<int>> data_;
+  struct RowsAndColumns {
+    vector<vector<int>> rows;
+    vector<vector<int>> columns;
+  };
+
+  RowsAndColumns loadMazeFromFile(const std::string& filename);
 };
 #endif  // SRC_MAZE_MODEL_PARSER_H

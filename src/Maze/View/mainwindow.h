@@ -30,7 +30,9 @@ class MainWindow : public QMainWindow {
  private slots:
   void on_importBtn_clicked();
 
- private:
+  void on_pushButton_clicked();
+
+private:
   Ui::MainWindow *ui;
   Controller *controller_;
   bool needsUpdate_ = false;
