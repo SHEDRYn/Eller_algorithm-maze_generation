@@ -20,27 +20,24 @@ void MainWindow::paintEvent(QPaintEvent *event) {
 
   QPainter painter(this);
   if (needsUpdate_) {
+    //    painter.fillRect(rect(), Qt::black);
+    painter.setPen(QPen(Qt::white, 2));
+
     int numRows = controller_->GetData().columns.size();
     int numCols = controller_->GetData().columns[0].size();
-
     int cellWidth = ui->map->width() / numCols;    // width:500 px
     int cellHeight = ui->map->height() / numRows;  // height:500 px
 
-    for (int i = 0; i < numRows; ++i) {
-      for (int j = 0; j < numCols; ++j) {
+    painter.drawRect(10, 10, 500, 500);
+    for (int i = 0; i < numCols; ++i) {
+      for (int j = 0; j < numRows; ++j) {
         int x = j * cellWidth + 10;
         int y = i * cellHeight + 10;
-        //        qDebug() << controller_->GetData().columns[i][j];
-        //        if (controller_->GetData().columns[i][j] == 1) {
-        //          painter.fillRect(x, y, cellWidth, cellHeight, Qt::black);
-        //        } else {
-        //          painter.fillRect(x, y, cellWidth, cellHeight, Qt::white);
-        //        }
-        if (controller_->GetData().columns[j][i]) {
+        if (controller_->GetData().rows[i][j]) {
           painter.drawLine(x, y + cellHeight, x + cellWidth, y + cellHeight);
         }
 
-        if (controller_->GetData().rows[j][i]) {
+        if (controller_->GetData().columns[i][j]) {
           painter.drawLine(x + cellWidth, y, x + cellWidth, y + cellHeight);
         }
       }
