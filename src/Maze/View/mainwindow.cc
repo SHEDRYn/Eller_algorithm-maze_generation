@@ -43,6 +43,22 @@ void MainWindow::paintEvent(QPaintEvent *event) {
       }
       qDebug() << "\n";
     }
+
+    painter.setPen(QPen(Qt::green, 2));
+
+        if (getter.get_path_size() > 1) {
+          std::vector<s21::PathFind::Point> current_path = getter.get_path();
+
+          for (unsigned int i = 0; i < current_path.size() - 1; ++i) {
+            int startX =
+                current_path[i].x_ * cellSizeHorizont + cellSizeHorizont / 2;
+            int startY = current_path[i].y_ * cellSizeVertic + cellSizeVertic / 2;
+            int endX =
+                current_path[i + 1].x_ * cellSizeHorizont + cellSizeHorizont / 2;
+            int endY = current_path[i + 1].y_ * cellSizeVertic + cellSizeVertic / 2;
+            painter.drawLine(startX, startY, endX, endY);
+          }
+        }
   }
 }
 
@@ -73,7 +89,9 @@ void MainWindow::on_importBtn_clicked() {
 // }
 
 void MainWindow::on_pushButton_clicked() {
-  if (!importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt")) {
+  bool fl = importFile("/Users/karim/school21/A1_Maze/src/Maze/testFileCrash.txt");
+  qDebug() << fl;
+  if (!fl) {
     QMessageBox::warning(this, "ERROR", "Не удалось получить данные");
     return;
   }
