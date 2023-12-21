@@ -1,6 +1,6 @@
 #include "parser.h"
 
-Parser::RowsAndColumns Parser::loadMazeFromFile(const std::string& filename) {
+RowsAndColumns Parser::loadMazeFromFile(const std::string& filename) {
   std::ifstream file(filename);
   if (!file.is_open()) {
     throw("Failed to open file: " + filename);
@@ -15,7 +15,7 @@ Parser::RowsAndColumns Parser::loadMazeFromFile(const std::string& filename) {
     throw("Error count of columns: " + std::to_string(numCols));
   }
 
-  Parser::RowsAndColumns maze;
+  RowsAndColumns maze;
   vector<vector<int>> maze_columns(numRows, vector<int>(numCols));
   vector<vector<int>> maze_rows(numRows, vector<int>(numCols));
 

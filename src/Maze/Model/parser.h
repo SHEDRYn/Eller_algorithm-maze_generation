@@ -3,18 +3,12 @@
 
 #include <fstream>
 #include <iostream>
-#include <vector>
 
-using std::vector;
+#include "dataTypes.h"
 
 class Parser {
  public:
   Parser() = default;
-
-  struct RowsAndColumns {
-    vector<vector<int>> rows;
-    vector<vector<int>> columns;
-  };
 
   RowsAndColumns loadMazeFromFile(const std::string& filename);
 };

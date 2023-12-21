@@ -11,6 +11,6 @@ bool Controller::loadMap(const std::string& filename) {
   return true;
 }
 
-Parser::RowsAndColumns Controller::GetData() {
+RowsAndColumns Controller::GetData() {
   return data_;
 }
