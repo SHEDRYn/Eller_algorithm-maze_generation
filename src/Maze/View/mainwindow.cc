@@ -1,10 +1,13 @@
 #include "mainwindow.h"
 
+
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent, Controller *c)
     : QMainWindow(parent), ui(new Ui::MainWindow), controller_(c) {
   ui->setupUi(this);
+  ui->mazeCols->setMaximum(50);
+  ui->mazeCols->setMinimum(0);
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -153,3 +156,10 @@ void MainWindow::SetEndPoint(int _x, int _y) {
   endPoint_.x = _x;
   endPoint_.y = _y;
 }
+
+void MainWindow::on_generateBtn_clicked()
+{
+    controller_->MazeGenerate();
+    repaint();
+}
+

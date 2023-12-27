@@ -38,7 +38,9 @@ class MainWindow : public QMainWindow {
   void on_importBtn_clicked();
   void on_pushButton_clicked();
 
- private:
+  void on_generateBtn_clicked();
+
+private:
   Ui::MainWindow *ui;
   Controller *controller_;
   // bool needsUpdate_ = false;
