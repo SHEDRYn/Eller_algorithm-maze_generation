@@ -3,7 +3,7 @@
 
 bool Controller::loadMap(const std::string& filename) {
   try {
-    data_ = pars.loadMazeFromFile(filename);
+    data_ = parser_.loadMazeFromFile(filename);
   } catch (std::string& error) {
     std::cout << error << std::endl;
     return false;
@@ -11,6 +11,14 @@ bool Controller::loadMap(const std::string& filename) {
   return true;
 }
 
+void Controller::loadPath(const RowsAndColumns walls, const Point start, const Point end) {
+  path_ = pathFinder_.findPath(walls, start, end);
+}
+
 RowsAndColumns Controller::GetData() {
   return data_;
+}
+
+vector<Point>  Controller::GetPath() {
+  return path_;
 }

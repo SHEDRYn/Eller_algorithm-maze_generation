@@ -1,26 +1,24 @@
 #ifndef SRC_MAZE_MODEL_PATHFINDER_H
 #define SRC_MAZE_MODEL_PATHFINDER_H
 
-#include "parser.h"
+#include <queue>
+
+#include "dataTypes.h"
+
+using std::queue;
 
 class PathFinder {
  public:
   PathFinder() = default;
-  ~PathFinder();
 
-  struct Point {
-    int x_ = 0;
-    int y_ = 0;
-    Point() = default;
-    Point(int x, int y) : x_(x), y_(y){};
-  };
   Point start;
   Point end;
 
-  void findPath(Parser::RowsAndColumns, const Point start, const Point end);
+  vector<Point> findPath(const RowsAndColumns walls, const Point start,
+                         const Point end);
 
  private:
-  /* data */
+  vector<Point> path_;
 };
 
 #endif  // SRC_MAZE_MODEL_PATHFINDER_H

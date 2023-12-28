@@ -12,11 +12,14 @@ SOURCES += \
     ../main.cc \
     ../View/mainwindow.cc \
     ../Model/parser.cc \
+    ../model/pathFinder.cc \
     ../Controller/controller.cc
 
 HEADERS += \
     ../View/mainwindow.h \
     ../Model/parser.h \
+    ../model/pathFinder.h \
+    ../model/dataTypes.h \
     ../Controller/controller.h
 
 FORMS += \

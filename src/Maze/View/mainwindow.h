@@ -28,6 +28,8 @@ class MainWindow : public QMainWindow {
   void SetEndPoint(int _x, int _y);
 
   bool importFile(const std::string &filePath);
+  void finderPath();
+  void cleanPath();
 
  protected:
   void mousePressEvent(QMouseEvent *event);

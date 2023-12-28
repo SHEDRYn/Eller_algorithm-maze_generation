@@ -37,9 +37,9 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
       qDebug() << "res: " << resX << resY;
 
       if (countMouseClick_ == 2) {
-        // getter.CleanPath();
-        update();
+        controller_->cleanPath();
         countMouseClick_ = 0;
+        repaint();
       }
 
       if (countMouseClick_ == 0) {
@@ -49,14 +49,25 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
         SetEndPoint(resX, resY);
         countMouseClick_++;
 
-        // find_path();
+        finderPath();
+        repaint();
       }
     }
   } else {
     event->ignore();
-    //   getter.CleanPath();
+    controller_->cleanPath();
     countMouseClick_ = 0;
   }
+}
+
+void MainWindow::finderPath() {
+  Point start;
+  start.x = startPoint_.x - 1;
+  start.y = startPoint_.y - 1;
+  Point end;
+  end.x = endPoint_.x - 1;
+  end.y = endPoint_.y - 1;
+  controller_->loadPath(controller_->GetData(), start, end);
 }
 
 void MainWindow::paintEvent(QPaintEvent *event) {
@@ -84,28 +95,19 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     }
 
     painter.setPen(QPen(Qt::green, 2));
-
-    // if (getter.get_path_size() > 1) {
-    //   std::vector<s21::PathFind::Point> current_path = getter.get_path();
-
-    //   for (unsigned int i = 0; i < current_path.size() - 1; ++i) {
-    //     int startX = current_path[i].x_ * cellWidth + cellWidth / 2;
-    //     int startY = current_path[i].y_ * cellHeight + cellHeight / 2;
-    //     int endX = current_path[i + 1].x_ * cellWidth + cellWidth / 2;
-    //     int endY = current_path[i + 1].y_ * cellHeight + cellHeight / 2;
-    //     painter.drawLine(startX, startY, endX, endY);
-    //   }
-    // }
-
-    //    if (Controller)
-
-    // for (unsigned int i = 0; i < 10 - 1; ++i) {
-    //   int startX = i * cellWidth + cellWidth / 2;
-    //   int startY = (i + 2) * cellHeight + cellHeight / 2;
-    //   int endX = (i + 1) * cellWidth + cellWidth / 2;
-    //   int endY = ((i + 2) + 1) * cellHeight + cellHeight / 2;
-    //   painter.drawLine(startX, startY, endX, endY);
-    // }
+    qDebug() << controller_->GetPath().size();
+    if (controller_->GetPath().size() > 1) {
+      for (unsigned int i = 0; i < controller_->GetPath().size() - 1; ++i) {
+        qDebug() << "p:" << controller_->GetPath()[i].x
+                 << controller_->GetPath()[i].y;
+        int startX = controller_->GetPath()[i].x * cellWidth + cellWidth / 2;
+        int startY = controller_->GetPath()[i].y * cellHeight + cellHeight / 2;
+        int endX = controller_->GetPath()[i + 1].x * cellWidth + cellWidth / 2;
+        int endY =
+            controller_->GetPath()[i + 1].y * cellHeight + cellHeight / 2;
+        painter.drawLine(startX, startY, endX, endY);
+      }
+    }
   }
 }
 
@@ -153,3 +155,6 @@ void MainWindow::SetEndPoint(int _x, int _y) {
   endPoint_.x = _x;
   endPoint_.y = _y;
 }
+
+// void MainWindow::setPath(vector<Point> current_path) { path_ = current_path;
+// }
