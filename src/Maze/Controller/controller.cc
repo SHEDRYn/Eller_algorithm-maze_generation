@@ -11,6 +11,7 @@ bool Controller::loadMap(const std::string& filename) {
   return true;
 }
 
+
 RowsAndColumns Controller::GetData() {
   return data_;
 }

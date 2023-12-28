@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent, Controller *c)
   ui->setupUi(this);
   ui->mazeCols->setMaximum(50);
   ui->mazeCols->setMinimum(0);
+
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -159,7 +160,10 @@ void MainWindow::SetEndPoint(int _x, int _y) {
 
 void MainWindow::on_generateBtn_clicked()
 {
-    controller_->MazeGenerate();
+    controller_->MazeGenerate(ui->mazeCols->text().toInt());
+//    std::cout << "ya proverka";
+    int a = controller_->loadMap("generatedMaze.txt");
+    std::cout << a;
     repaint();
 }
 

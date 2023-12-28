@@ -11,9 +11,13 @@ class Controller {
   bool loadMap(const std::string& filename);
   RowsAndColumns GetData();
 
-  void MazeGenerate(){ // он тут не должен быть, и вообще нужно все переделать
+  void MazeGenerate(int cols){ // он тут не должен быть, и вообще нужно все переделать
       FileCreator file;
-      file.CreateFile();
+      file.CreateFile(cols);
+  }
+
+  void MazeUpdate(RowsAndColumns new_maze){ // это тоже не должен быть тут
+    data_ = new_maze;
   }
 
  private:
