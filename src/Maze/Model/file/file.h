@@ -17,7 +17,7 @@ public:
         in_->close();
     }
 
-    std::ifstream* GetFile(){
+    std::ifstream* GetStream(){
         return in_;
     }
 

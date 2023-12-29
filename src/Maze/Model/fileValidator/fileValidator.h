@@ -7,7 +7,7 @@
 #include "../file/file.h"
 
 
-class FileValidator { // надо доделать
+class FileValidator { // надо доделать. он сырой
 public:
     FileValidator(){};
 
@@ -16,10 +16,12 @@ public:
         std::string num_str;
 
         std::cout << "Я валидатор" << std::endl;
-        std::getline(*file->GetFile(),line);
+        std::getline(*file->GetStream(),line);
+
+
 
         
-        while(std::getline(*file->GetFile(),line)){
+        while(std::getline(*file->GetStream(),line)){
             for (char ch : line){
                 if (ch != '1' && ch != '0' && ch != ' '){
                     std::cout << "Я провал валидатора" << std::endl;
@@ -32,7 +34,12 @@ public:
     }
 
 private:
-        
+    // bool CheckNums(File* file){
+    //     std::getline(*file->GetStream(),line);
+    //     if (line.lenght() = 0;){
+    //         CheckNums(file);
+    //     }
+    // }
 };
 
 

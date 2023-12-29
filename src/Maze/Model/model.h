@@ -26,16 +26,16 @@ public:
 
         file_->OpenFile();
 
-        if(file_->GetFile()->is_open() && file_validator.IsValid(file_)){
+        if(file_->GetStream()->is_open() && file_validator.IsValid(file_)){
             maze_ = new Maze;
             *maze_ = file_parser.Parsing(file_);
         } 
-
         file_->CloseFile();
-        
     }
 
-
+    Maze* GetMaze(){
+        return maze_;
+    } 
 
     
     

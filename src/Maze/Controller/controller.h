@@ -14,6 +14,10 @@ public:
         m_->FileProcessing(path);
     }
 
+    Maze* GetMaze(){
+        return m_->GetMaze();
+    }
+
 private:
     Model* m_;
 };

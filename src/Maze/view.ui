@@ -6,40 +6,63 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>971</width>
+    <height>722</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>view</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="file_name">
-      <property name="text">
-       <string>file_name</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="OpenFIle">
-      <property name="text">
-       <string>OpenFile</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QLabel" name="file_name">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>100</y>
+      <width>231</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>file_name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="OpenFIle">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>151</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>OpenFile</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="maze_board" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>12</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>971</width>
      <height>24</height>
     </rect>
    </property>

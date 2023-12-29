@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QPainter>
 
 #include "../controller/controller.h"
 
@@ -21,6 +22,9 @@ class view : public QMainWindow
 public:
     view(Controller *c, QWidget *parent = nullptr);
     ~view();
+
+protected:
+    // void paintEvent(QPaintEvent *event) override;
 
 private slots:
     void on_OpenFIle_clicked();
