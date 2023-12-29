@@ -10,7 +10,8 @@ class Controller {
 
   bool loadMap(const std::string& filename);
   void loadPath(const RowsAndColumns walls, const Point start, const Point end);
-  void cleanPath() { path_.clear(); }
+  void cleanPath();
+
   RowsAndColumns GetData();
   vector<Point> GetPath();
 
@@ -18,7 +19,6 @@ class Controller {
   Parser parser_;
   PathFinder pathFinder_;
 
-  vector<Point> path_;
   RowsAndColumns data_;
 };
 

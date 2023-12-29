@@ -36,18 +36,14 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
       qDebug() << x << y;
       qDebug() << "res: " << resX << resY;
 
-      if (countMouseClick_ == 2) {
-        controller_->cleanPath();
-        countMouseClick_ = 0;
-        repaint();
-      }
-
       if (countMouseClick_ == 0) {
+        controller_->cleanPath();
+
         SetStartPoint(resX, resY);
         countMouseClick_++;
       } else if (countMouseClick_ == 1) {
         SetEndPoint(resX, resY);
-        countMouseClick_++;
+        countMouseClick_--;
 
         finderPath();
         repaint();

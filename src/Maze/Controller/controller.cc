@@ -12,13 +12,15 @@ bool Controller::loadMap(const std::string& filename) {
 }
 
 void Controller::loadPath(const RowsAndColumns walls, const Point start, const Point end) {
-  path_ = pathFinder_.findPath(walls, start, end);
+  pathFinder_.findPath(walls, start, end);
 }
+
+void Controller::cleanPath() { pathFinder_.cleanPath(); }
 
 RowsAndColumns Controller::GetData() {
   return data_;
 }
 
-vector<Point>  Controller::GetPath() {
-  return path_;
+vector<Point> Controller::GetPath() {
+  return pathFinder_.GetPath();
 }
