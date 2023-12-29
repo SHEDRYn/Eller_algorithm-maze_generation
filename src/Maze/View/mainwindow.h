@@ -22,31 +22,30 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = nullptr, Controller *c = nullptr);
   ~MainWindow();
 
-  size_t GetNumCols();
-  size_t GetNumRows();
-  void SetStartPoint(int _x, int _y);
-  void SetEndPoint(int _x, int _y);
+  // size_t GetNumCols();
+  // size_t GetNumRows();
+  // void SetStartPoint(int _x, int _y);
+  // void SetEndPoint(int _x, int _y);
 
-  bool importFile(const std::string &filePath);
+  // bool importFile(const std::string &filePath);
 
  protected:
-  void mousePressEvent(QMouseEvent *event);
-  void paintEvent(QPaintEvent *event) override;
+  // void mousePressEvent(QMouseEvent *event);
+  // void paintEvent(QPaintEvent *event) override;
   // virtual void update();
 
  private slots:
   void on_importBtn_clicked();
-  void on_pushButton_clicked();
-
-  void on_generateBtn_clicked();
+  // void on_pushButton_clicked();
+  // void on_generateBtn_clicked();
 
 private:
   Ui::MainWindow *ui;
   Controller *controller_;
-  // bool needsUpdate_ = false;
-  bool repaintToUpdate_ = false;
-  size_t countMouseClick_ = 0;
-  Point startPoint_;
-  Point endPoint_;
+  
+  // bool repaintToUpdate_ = false;
+  // size_t countMouseClick_ = 0;
+  // Point startPoint_;
+  // Point endPoint_;
 };
 #endif  // SRC_MAZE_VIEW_MAINWINDOW_H

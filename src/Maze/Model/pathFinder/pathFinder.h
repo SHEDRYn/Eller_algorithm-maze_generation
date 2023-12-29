@@ -20,7 +20,7 @@ class PathFinder {
   void findPath(Parser::RowsAndColumns, const Point start, const Point end);
 
  private:
-  /* data */
+  
 };
 
 #endif  // SRC_MAZE_MODEL_PATHFINDER_H

@@ -11,12 +11,12 @@ CONFIG += c++17
 SOURCES += \
     ../main.cc \
     ../View/mainwindow.cc \
-    ../Model/parser.cc \
+    ../Model/model.cc \
     ../Controller/controller.cc
 
 HEADERS += \
     ../View/mainwindow.h \
-    ../Model/parser.h \
+    ../Model/model.h \
     ../Controller/controller.h
 
 FORMS += \

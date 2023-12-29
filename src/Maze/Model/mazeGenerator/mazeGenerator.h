@@ -5,8 +5,9 @@
 
 class MazeGenerator{
 public:
-    void Generate(std::ofstream& file, int cols){
+    RowsAndColumns Generate(std::ofstream& file, int cols){
 
+        RowsAndColumns maze;
         // file << "i am a test and i have " << cols;
 
         file << "4 4" << std::endl;
@@ -21,6 +22,8 @@ public:
         file << "1 0 1 0" << std::endl;
         file << "1 0 1 0" << std::endl;
         // file << cols ;
+
+        return maze;
     }
 private:
 

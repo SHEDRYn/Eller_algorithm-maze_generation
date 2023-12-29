@@ -7,11 +7,12 @@
 
 class FileCreator{
 public:
-    void CreateFile(int cols){
+    RowsAndColumns CreateFile(int cols){
         std::ofstream out("generatedMaze.txt");
         MazeGenerator maze;
         maze.Generate(out, cols);
         out.close();
+        return 
     }
 
     // std::string GetPath(){
