@@ -14,7 +14,8 @@ class PathFinder {
   Point start;
   Point end;
 
-  void findPath(const RowsAndColumns walls, const Point start, const Point end);
+  void findPath(const RowsAndColumns& walls, const Point& start,
+                const Point& end);
   void cleanPath();
 
   vector<Point> GetPath();
