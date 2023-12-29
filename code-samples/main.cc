@@ -12,23 +12,23 @@ void print(Controller c) {
 
 int main() {
   Controller c;
-  c.loadMap("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt");
-  c.loadPath(c.GetData(), Point(1, 0), Point(2, 0));
+  c.loadMap("/Users/karim/school21/A1_Maze/src/Maze/testFile1.txt");
+  c.loadPath(c.GetData(), Point(19, 2), Point(0, 0));
   print(c);
   c.cleanPath();
-  c.loadPath(c.GetData(), Point(0, 0), Point(1, 0));
-  print(c);
-  c.cleanPath();
-  c.loadPath(c.GetData(), Point(0, 0), Point(3, 0));
-  print(c);
-  c.cleanPath();
-  c.loadPath(c.GetData(), Point(0, 0), Point(3, 3));
-  print(c);
-  print(c);
-  c.cleanPath();
-  c.loadPath(c.GetData(), Point(3, 0), Point(2, 0));
-  print(c);
-  c.cleanPath();
-  c.loadPath(c.GetData(), Point(3, 1), Point(3, 0));
-  print(c);
+  // c.loadPath(c.GetData(), Point(0, 0), Point(1, 0));
+  // print(c);
+  // c.cleanPath();
+  // c.loadPath(c.GetData(), Point(0, 0), Point(3, 0));
+  // print(c);
+  // c.cleanPath();
+  // c.loadPath(c.GetData(), Point(0, 0), Point(3, 3));
+  // print(c);
+  // print(c);
+  // c.cleanPath();
+  // c.loadPath(c.GetData(), Point(3, 0), Point(2, 0));
+  // print(c);
+  // c.cleanPath();
+  // c.loadPath(c.GetData(), Point(3, 1), Point(3, 0));
+  // print(c);
 }

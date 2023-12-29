@@ -23,10 +23,10 @@ bool MainWindow::importFile(const std::string &filePath) {
 
 void MainWindow::mousePressEvent(QMouseEvent *event) {
   if (event->button() == Qt::LeftButton) {
-    int x = event->position().x();
-    int y = event->position().y();
+    int x = event->position().x() - 10;
+    int y = event->position().y() - 10;
 
-    if (x > 10 && x <= 500 && y > 10 && y <= 500) {
+    if (x > 10 && x <= 510 && y > 10 && y <= 510) {
       int cellWidth = ui->map->width() / GetNumRows();    // width:500 px
       int cellHeight = ui->map->height() / GetNumCols();  // height:500 px
 
@@ -91,16 +91,17 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     }
 
     painter.setPen(QPen(Qt::green, 2));
-    qDebug() << controller_->GetPath().size();
     if (controller_->GetPath().size() > 1) {
       for (unsigned int i = 0; i < controller_->GetPath().size() - 1; ++i) {
-        qDebug() << "p:" << controller_->GetPath()[i].x
-                 << controller_->GetPath()[i].y;
-        int startX = controller_->GetPath()[i].x * cellWidth + cellWidth / 2;
-        int startY = controller_->GetPath()[i].y * cellHeight + cellHeight / 2;
-        int endX = controller_->GetPath()[i + 1].x * cellWidth + cellWidth / 2;
+//        qDebug() << "p:" << controller_->GetPath()[i].x
+//                 << controller_->GetPath()[i].y;
+        int startX = controller_->GetPath()[i].x * cellWidth + cellWidth / 2 + 10;
+        int startY = controller_->GetPath()[i].y * cellHeight + cellHeight / 2 + 10;
+        int endX = controller_->GetPath()[i + 1].x * cellWidth + cellWidth / 2 + 10;
         int endY =
-            controller_->GetPath()[i + 1].y * cellHeight + cellHeight / 2;
+            controller_->GetPath()[i + 1].y * cellHeight + cellHeight / 2 + 10;
+        qDebug() << "from:" << startX << startY;
+        qDebug() << "to:" << endX << endY;
         painter.drawLine(startX, startY, endX, endY);
       }
     }
@@ -127,7 +128,7 @@ void MainWindow::on_importBtn_clicked() {
 // }
 
 void MainWindow::on_pushButton_clicked() {
-  bool fl = importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile.txt");
+  bool fl = importFile("/Users/karim/school21/A1_Maze/src/Maze/testFile1.txt");
   qDebug() << fl;
   if (!fl) {
     QMessageBox::warning(this, "ERROR", "Не удалось получить данные");
