@@ -1,26 +1,21 @@
-#ifndef SRC_MAZE_CONTROLLER_CONTROLLER_H
-#define SRC_MAZE_CONTROLLER_CONTROLLER_H
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
-#include "../Model/model.h"
-#include "../Model/fileCreator/fileCreator.h"
+#include "../model/model.h"
+
+#include <iostream>
+#include <string>
 
 class Controller {
- public:
-  Controller() = default;
+public:
+    Controller(Model* m) :m_(m){};
 
-  // bool loadMap(const std::string& filename);
-  // RowsAndColumns GetData();
+    void FileProcessing(const std::string& path){
+        m_->FileProcessing(path);
+    }
 
-  // RowsAndColumns MazeGenerate(int cols){ // он тут не должен быть, и вообще нужно все переделать
-  //     FileCreator file;
-  //     return data_ = file.CreateFile(cols);
-  // }
-
-
-
- private:
-  // Parser pars;
-  // RowsAndColumns data_;
+private:
+    Model* m_;
 };
 
-#endif  // SRC_MAZE_CONTROLLER_CONTROLLER_H
+#endif // CONTROLLER_H
