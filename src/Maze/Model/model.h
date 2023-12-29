@@ -18,7 +18,7 @@ public:
         if (file_) delete file_;
     }
 
-    void FileProcessing(const std::string& path){
+    bool FileProcessing(const std::string& path){
 
         file_ = new File(path);
         FileValidator file_validator;
@@ -26,11 +26,15 @@ public:
 
         file_->OpenFile();
 
-        if(file_->GetStream()->is_open() && file_validator.IsValid(file_)){
-            maze_ = new Maze;
-            *maze_ = file_parser.Parsing(file_);
+        if(!file_->GetStream()->is_open() || !file_validator.IsValid(file_)){
+            return false;
         } 
+
+        maze_ = new Maze;
+        *maze_ = file_parser.Parsing(file_);
         file_->CloseFile();
+
+        return true;
     }
 
     Maze* GetMaze(){

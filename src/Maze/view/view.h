@@ -24,7 +24,7 @@ public:
     ~view();
 
 protected:
-    // void paintEvent(QPaintEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
 
 private slots:
     void on_OpenFIle_clicked();
@@ -32,5 +32,6 @@ private slots:
 private:
     Ui::view *ui_;
     Controller* c_;
+    bool repaintToUpdate_ = false;
 };
 #endif // VIEW_H
