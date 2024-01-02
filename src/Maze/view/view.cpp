@@ -14,6 +14,45 @@ view::~view()
     delete ui_;
 }
 
+void view::mousePressEvent(QMouseEvent *event) {
+  if (event->button() == Qt::LeftButton) {
+    int x = event->position().x();
+    int y = event->position().y();
+
+    if (x > 10 && x <= 500 && y > 10 && y <= 500) {
+      int cellWidth = ui_->maze_board->width() / c_->GetMaze()->rows_;    // width:500 px
+      int cellHeight = ui_->maze_board->height() / c_->GetMaze()->cols_;  // height:500 px
+
+      int resX = x / cellWidth + 1;
+      int resY = y / cellHeight + 1;
+
+      qDebug() << x << y;
+      qDebug() << "res: " << resX << resY;
+
+      if (countMouseClick_ == 2) {
+        // getter.CleanPath();
+        update();
+        countMouseClick_ = 0;
+      }
+
+      if (countMouseClick_ == 0) {
+        SetStartPoint(resX, resY);
+        countMouseClick_++;
+      } else if (countMouseClick_ == 1) {
+        SetEndPoint(resX, resY);
+        countMouseClick_++;
+
+        // find_path();
+      }
+    }
+  } else {
+    event->ignore();
+    //   getter.CleanPath();
+    countMouseClick_ = 0;
+  }
+}
+
+
 void view::paintEvent(QPaintEvent *event) {
   QPainter painter(this);
   if (repaintToUpdate_) {
@@ -60,11 +99,12 @@ void view::on_OpenFIle_clicked()
 
 }
 
-// int GetNumRows() {
-//   return c_->GetMaze().rows_;
-// }
-
-// int GetNumCols() {
-//   return c_->GetMaze().cols_;
-// }
+void view::SetStartPoint(int x, int y) {
+  startPoint_.x = x;
+  startPoint_.y = y;
+}
+void view::SetEndPoint(int x, int y) {
+  endPoint_.x = x;
+  endPoint_.y = y;
+}
 
