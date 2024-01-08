@@ -73,7 +73,6 @@ void PathFinder::findPath(const RowsAndColumns& walls, const Point& start,
       }
     }
   }
-  return;
 }
 
 void PathFinder::cleanPath() { path_.clear(); }

@@ -1,6 +1,4 @@
-#include "mazeGenerator.h"
-
-namespace s21 {
+#include "maze.h"
 
 bool randomBool() {
   std::random_device rd;
@@ -124,5 +122,3 @@ void Maze::generateMaze() {
   addingEndLine();
   clearGenerator();
 }
-
-}  // namespace s21
